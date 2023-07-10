@@ -61,7 +61,7 @@ app.use(passport.session());
 
 
 
-var url = process.env.MONGODB_URI || "mongodb://localhost:27017/moviesdb";
+var url = process.env.MONGODB_URI || "mongodb+srv://yashmahale5:1234qwer@cluster0.pl7026n.mongodb.net/moviesdb";
 
 MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
   if (err) throw err;
