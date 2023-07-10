@@ -516,7 +516,7 @@ app.post('/signup_check', urlencodedParser ,  [
 
 app.get('/login', function(req, res) {
   
-    res.render('pages/login');
+    res.render('./pages/login');
 });
 
 
