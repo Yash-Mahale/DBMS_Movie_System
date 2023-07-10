@@ -391,7 +391,7 @@ catch (error) {
 
 
 app.get('/signup', function(req, res) {
-    res.render('pages/signup');
+    res.render('./pages/signup');
 });
 
 app.post('/signup_check', urlencodedParser ,  [
