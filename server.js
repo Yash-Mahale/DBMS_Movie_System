@@ -438,7 +438,7 @@ app.post('/signup_check', urlencodedParser ,  [
     if(!errors.isEmpty()) 
     {
         const alert = errors.array()
-        res.render('pages/signup', {
+        res.render('./pages/signup', {
             alert,
             data: req.body
         })
@@ -460,7 +460,7 @@ app.post('/signup_check', urlencodedParser ,  [
                      {
                           
                           const alert2 = "email not exist"
-                          res.render('pages/signup',{
+                          res.render('./pages/signup',{
                                  msg:'Email already exists',
                                  alert2,
                                  data: req.body
@@ -574,7 +574,7 @@ app.post('/login_submit', urlencodedParser , function(req, res) {
                      else{
                         console.log('wrong email/password entered')
                         const alert2 = "wrong email/password entered"
-                        res.render('pages/login',{
+                        res.render('./pages/login',{
                                  msg:'wrong email/password entered',
                                  alert2,
                                  data: req.body
@@ -681,7 +681,7 @@ app.get('/movie/:type/:id', function(req, res) {
   }
     
     
-    res.render('pages/moviedetails',{mid:mid,poster: poster, poster2:poster2, title: title, 
+    res.render('./pages/moviedetails',{mid:mid,poster: poster, poster2:poster2, title: title, 
                                      date:date, date2:date2, year:year , country:country , genres: genres,
                                      runtime:runtime, tagline:tagline, overview: overview,
                                      imdb_rating:imdb_rating, imdb_id: imdb_id, language: language, original_language: original_language, 
@@ -756,7 +756,7 @@ var result = dbo.collection("city_theatres").find({}).toArray(function(err,resul
             sess.dict = dict
           sess.cities = cities
           alert1 = "alert1"
-          res.render('pages/booking',{
+          res.render('./pages/booking',{
   poster: poster, title: title, cities:cities,dict:dict,dateerr,reserv_seats,alert1,select_time: 0,theatre:-1,selected_city,selected_date,data: req.body
 }) 
 
@@ -839,7 +839,7 @@ for(i=0;i<temp_seats.length;i++)
  console.log(reserv_seats)
  const alert1 = "returning values"
  var selected_city,selected_date
-            res.render('pages/booking',{
+            res.render('./pages/booking',{
   cities:sess.cities,dict:sess.dict,reserv_seats:reserv_seats,alert1,dateerr,theatre:theatre,select_time: time,selected_city,selected_date,data: req.body
 }) 
              
@@ -892,7 +892,7 @@ res.render('pages/foods')
 
 app.get('/foods', function(req, res) {
 
-res.render('pages/foods')
+res.render('./pages/foods')
 
 })
 
@@ -978,7 +978,7 @@ else
 
 
 
-res.render('pages/payment')
+res.render('./pages/payment')
 
 })
 
@@ -1009,7 +1009,7 @@ var sess  = req.session
   {
      var msg1 = "Please enter valid card number";
      var alert2 = "invalid"
-     res.render('pages/payment',{msg1,alert2 , data: req.body})
+     res.render('./pages/payment',{msg1,alert2 , data: req.body})
   }
   
   else
