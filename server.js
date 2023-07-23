@@ -247,7 +247,7 @@ var  popularity2 = []
     }
    } 
   
-   res.render('pages/htmlfile',{
+   res.render('./pages/htmlfile',{
                                  
                                 link1:a ,
                                  alert1,
@@ -346,7 +346,7 @@ var  popularity2 = []
     }
    } 
 
-    res.render('pages/htmlfile2',{
+    res.render('./pages/htmlfile2',{
                                totalpg:total_pages2,pno: pno,
                                link1:a2 ,
                                  alert1,
@@ -885,7 +885,7 @@ else
 }
 
 console.log(seats,price)
-res.render('pages/foods')
+res.render('./pages/foods')
 
 })
 
@@ -1136,7 +1136,7 @@ MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
                    console.log(old_pass, sess.old_pass)
 
 
-res.render('pages/settings',{
+res.render('./pages/settings',{
        Fullname: sess.Fullname,
        email:sess.email,
        phone:sess.phone,
@@ -1181,7 +1181,7 @@ app.post('/settings_script', urlencodedParser ,  [
     if(!errors.isEmpty()) 
     {
         const alert = errors.array()
-        res.render('pages/settings', {
+        res.render('./pages/settings', {
             alert,
             data: req.body,
             pro_updated: "false", pass_updated: "false",
@@ -1223,7 +1223,7 @@ app.post('/settings_script', urlencodedParser ,  [
 
                 console.log(sess.Fullname,sess.email,sess.phone)
 
-                     res.render('pages/settings',{
+                     res.render('./pages/settings',{
        Fullname: sess.Fullname,
        email:sess.email,
        phone:sess.phone,
@@ -1242,7 +1242,7 @@ app.post('/settings_script', urlencodedParser ,  [
                  {
 
                        const alert2 = "email already exist"
-                          res.render('pages/settings',{
+                          res.render('./pages/settings',{
                                  msg:'Email already exists',
                                  email: sess.email,
                                  alert2,
@@ -1303,7 +1303,7 @@ var regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{5,}$/
 
 if(!regex.test(pass2))
 {
-   res.render('pages/settings',{
+   res.render('./pages/settings',{
                        msg5:'Please enter valid New Password',
                        Fullname: sess.Fullname,
                        email:sess.email,
@@ -1335,7 +1335,7 @@ if( pass2 !== undefined && pass3!== undefined)
                   sess.old_pass = "yes"
                     console.log("password changed successfully")
                      db.close()
-                     res.render('pages/settings',{
+                     res.render('./pages/settings',{
                        Fullname: sess.Fullname,
                        email:sess.email,
                        phone:sess.phone,
@@ -1350,7 +1350,7 @@ if( pass2 !== undefined && pass3!== undefined)
 
                            else{
                                   
-                                   res.render('pages/settings',{
+                                   res.render('./pages/settings',{
                                  msg3:'new passwords do not match',
                                  Fullname: sess.Fullname,
                                  email:sess.email,
@@ -1365,7 +1365,7 @@ if( pass2 !== undefined && pass3!== undefined)
                       else{
                            
 
-                           res.render('pages/settings',{
+                           res.render('./pages/settings',{
                                  msg3:'wrong old password',
                                  Fullname: sess.Fullname,
                                  email:sess.email,
@@ -1392,13 +1392,13 @@ if( pass2 !== undefined && pass3!== undefined)
 
 app.get('/success', function(req, res) {
 
-res.render('pages/success',{download: "ok",mail_status:"no"})
+res.render('./pages/success',{download: "ok",mail_status:"no"})
 
 })
 
 app.get('/download', function(req, res) {
 var sess = req.session;
-res.render('pages/download_ticket')
+res.render('./pages/download_ticket')
 
 })
 
@@ -1461,7 +1461,7 @@ app.get('/my_bookings', function(req, res) {
        sess.total = total
        sess.status = status
        sess.date_of_show = date_of_show
-res.render('pages/my_bookings',{date_of_booking,date_of_booking1,title2,no_of_seats,total,status,total_rows,download:"no",mail_status:"no"})
+res.render('./pages/my_bookings',{date_of_booking,date_of_booking1,title2,no_of_seats,total,status,total_rows,download:"no",mail_status:"no"})
 
 
  })
@@ -1506,7 +1506,7 @@ MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
 
        
 
-      res.render('pages/my_bookings',{date_of_booking: sess.date_of_booking,
+      res.render('./pages/my_bookings',{date_of_booking: sess.date_of_booking,
                                       date_of_booking1: sess.date_of_booking1,
                                       title2: sess.title2,
                                       no_of_seats: sess.no_of_seats,
@@ -1576,7 +1576,7 @@ app.post('/mail', urlencodedParser ,function(req, res) {
 var sess = req.session
 var mail = req.body.email
 sess.to_mail = mail
-res.render('pages/mail.ejs',{download: "ok"});
+res.render('./pages/mail.ejs',{download: "ok"});
 
 })
 
@@ -1611,7 +1611,7 @@ dbo.collection("users_transactions").findOne({user_id: sess.user_id, Date_of_boo
 
 
 
-            res.render('pages/mail.ejs',{download: "ok"});
+            res.render('./pages/mail.ejs',{download: "ok"});
                       
                     
          })
@@ -1681,7 +1681,7 @@ transporter.sendMail(message, function(error, info){
       
       sess.page = "no"
       console.log(sess.status)
-      res.render('pages/my_bookings',{date_of_booking: sess.date_of_booking,
+      res.render('./pages/my_bookings',{date_of_booking: sess.date_of_booking,
                                       date_of_booking1: sess.date_of_booking1,
                                       title2: sess.title2,
                                       no_of_seats: sess.no_of_seats,
@@ -1693,7 +1693,7 @@ transporter.sendMail(message, function(error, info){
                                     })
     }
       else
-    res.render('pages/success',{download:"ok", mail_status:"success"})
+    res.render('./pages/success',{download:"ok", mail_status:"success"})
      
   }
 });
@@ -1709,7 +1709,7 @@ transporter.sendMail(message, function(error, info){
 app.get('/about_us', function(req, res) {
 
 
-res.render('pages/about_us',{subscribe: "no",unsubscribe:"no",contact:"no"});
+res.render('./pages/about_us',{subscribe: "no",unsubscribe:"no",contact:"no"});
 
 })
 
@@ -1743,7 +1743,7 @@ dbo.collection("users_transactions").findOne({user_id: sess.user_id, Date_of_boo
                         if(sess.extra_orders == null)
                           sess.extra_orders = ""
                         
-                        res.render('pages/ticket_details',{date_of_show2,date_of_booking})
+                        res.render('./pages/ticket_details',{date_of_show2,date_of_booking})
                         
 
 
@@ -1866,7 +1866,7 @@ for(i=0;i<temp_seats.length;i++)
  sess.reserv_seats = reserv_seats
    
              
-             res.render('pages/booking',{
+             res.render('./pages/booking',{
   cities:cities,dict:dict,reserv_seats:reserv_seats,alert1,dateerr,theatre:theatre_no,select_time: time,selected_city: city,selected_date:date,data: req.body
 })
 
@@ -2049,7 +2049,7 @@ app.post('/subscribe', urlencodedParser , function(req, res) {
                    sess.subscribe_status = "yes"
                    sess.subscribed_email = subscribed_email
                    console.log("subscribed successfully")
-                   res.render('pages/about_us',{subscribe: "yes",unsubscribe:"no",contact:"no"});
+                   res.render('./pages/about_us',{subscribe: "yes",unsubscribe:"no",contact:"no"});
                 })
 
 
@@ -2078,7 +2078,7 @@ app.post('/unsubscribe', urlencodedParser , function(req, res) {
                    sess.subscribe_status = "no"
                    sess.subscribed_email = null
                    console.log("unsubscribed successfully")
-                   res.render('pages/about_us',{subscribe: "no",unsubscribe:"yes",contact:"no"});
+                   res.render('./pages/about_us',{subscribe: "no",unsubscribe:"yes",contact:"no"});
                 })
 
 
@@ -2119,16 +2119,14 @@ app.post('/contact_us', urlencodedParser , function(req, res) {
 
         dbo.collection("contact_us").insertOne(myobj, function(err, res) {
                              if (err) throw err;
-                             console.log("1 contact inserted into databse");
-                            
-                                                     
-                             
+                             console.log("1 contact inserted into databse"); 
                            });
-        res.render('pages/about_us',{subscribe: "no",unsubscribe:"no",contact:"yes"});
+        res.render('./pages/about_us',{subscribe: "no",unsubscribe:"no",contact:"yes"});
                 
 
 
 
+        
 })
 
 
